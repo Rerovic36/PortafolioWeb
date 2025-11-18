@@ -1,0 +1,604 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+    text-decoration: none;
+    list-style: none;
+    scroll-behavior: smooth;
+}
+
+:root{
+    --bg-color: #2a2a2a;
+    --second-bg-color: #202020;
+    --text-color: #fff;
+    --second-color: #ccc;
+    --main-color: #494543;
+    --big-font: 5rem;
+    --h2-font: 3rem;
+    --p-font: 1.1rem;
+}
+
+body{
+    background: var(--bg-color);
+    color: var(--text-color);
+}
+header{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: transparent;
+    padding: 22px 15%;
+    border-bottom: 1px solid transparent;
+    transition: all .45s ease;
+}
+.logo{
+    color: var(--text-color);
+    font-size: 35px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+span{
+    color: var(--main-color);
+}
+.navlist{
+    display: flex;
+}
+.navlist a{
+    color: var(--second-color);
+    font-size: 17px;
+    font-weight: 500;
+    margin: 0 25px;
+    transition: all .45s ease;
+}
+.navlist a:hover{
+    color: var(--main-color);
+}
+/* este es el color del primer boton del navbar que aparece como predeterminado */
+.navlist a.active{
+    color: var(--main-color);
+}
+/* cambia el punto del navbar ademas de otras propiedades */
+#menu-icon{
+    font-size: 35px;
+    color: var(--text-color);
+    z-index: 10001;
+    cursor: pointer;
+    margin-left: 25px;
+    display: none;
+}
+section{
+    padding: 160px 15% 120px;
+}
+/* diseño central */
+.home{
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    background-image: url(../608428bc25418.jpeg);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.slide{
+    margin-bottom: 20px;   
+}
+.one{
+    display: inline-block;
+    margin-right: 15px;
+    height: 32px;
+    padding: 0 15px;
+    line-height: 32px;
+    font-size: 20px;
+    font-weight: 500;
+    border-radius: 5px;
+    background: var(--main-color);
+    color: var(--text-color);
+}
+.two{
+    display: inline-block;
+    color: var(--second-color);
+    font-size: 20px;
+    font-weight: 500;
+}
+.home-text h1{
+    font-size: var(--big-font);
+    font-weight: 700;
+    color: var(--text-color);
+    line-height: 1.1;
+    margin: 0 0 8px;
+}
+.home-text h3{
+    color: var(--text-color);
+    margin: 0 0 35px;
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1.1;
+}
+.home-text p{
+    color: var(--second-color);
+    font-size: var(--p-font);
+    line-height: 1.8;
+    margin-bottom: 40px;
+}
+.button{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.btn{
+    display: inline-block;
+    padding: 12px 28px;
+    background: var(--main-color);
+    border-radius: 5px;
+    color: var(--text-color);
+    font-size: 1rem;
+    letter-spacing: 1px;
+    font-weight: 600;
+    transition: all .45s ease;
+}
+/* cambia la escala del boton al poner el cursor sobre el */
+.btn:hover{
+    transform: scale(0.9);
+}
+.btn2{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-left: 35px;
+}
+.btn2 span i{
+    height: 55px;
+    width: 55px;
+    background: var(--main-color);
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 35px;
+    border-radius: 50%;
+    margin-right: 15px;
+    transition: all .45s ease;
+}
+/* hover especial para el boton de play, el translate es como la grafica de ecuaciones lineales */
+.btn2 span i:hover{
+    transform: scale(1.1) translateY(5px);
+}
+
+/* el sticky es para que cuando se baje con scroll se active una funcion en el js
+que agrege color a la navbar */
+
+header.sticky{
+    background: var(--bg-color);
+    border-bottom: 1px solid #ffffff1a;
+    /* border-bottom: 1px solid #d82929c7; */
+    padding: 12px 15%;
+}
+
+/* *************** seccion about ********************* */
+
+.about{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    gap: 1.5rem;
+}
+/* imagen about me */
+.about-img img{
+    max-width: 530px;
+    height: auto;
+    width: 100%;
+    border-radius: 8px;
+}
+.about-text h2{
+    font-size: var(--h2-font);
+    line-height: 1;
+}
+.about-text h4{
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--text-color);
+    line-height: 1.7;
+    margin: 15px 0 30px;
+}
+.about-text p{
+    color: var(--second-color);
+    font-size: var(--p-font);
+    line-height: 1.8;
+    /* margin-bottom: 4rem; */
+}
+
+/* *************** seccion servicios *********************** */
+
+.services{
+    background: var(--second-bg-color);
+}
+.main-text{
+    text-align: center;
+}
+.main-text p{
+    color: var(--second-color);
+    font-size: 15px;
+    margin-bottom: 15px;
+}
+.main-text h2{
+    font-size: var(--h2-font);
+    line-height: 1;
+}
+.services-content{
+    /* quiero entender para que esta propiedad de display grid */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, auto));
+    align-items: center;
+    gap: 2.5rem;
+    margin-top: 5rem;
+}
+.box{
+    background: var(--bg-color);
+    padding: 35px 45px;
+    border-radius: 8px;
+    transition: all .45s ease;
+}
+/* iconos */
+.s-icons i{
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+.box h3{
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--text-color);   
+}
+.box p{
+    color: var(--second-color);
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-bottom: 25px;
+}
+.read{
+    display: inline-block;
+    padding: 8px 18px;
+    background: #333333;
+    color: var(--second-color);
+    font-size: 17px;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: all .45s ease;
+}
+/* hover a los botones de more */
+.read:hover{
+    letter-spacing: 2px;
+    background: #ffffff99;
+    color: rgb(59, 52, 52)
+}
+/* hover a las cajas de servicios */
+.box:hover{
+    transform: translateY(-8px);
+    cursor: pointer;
+}
+.portfolio-content{
+    /* nuevamente quiero aprender a hacer esta parte bien y entender */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, auto));
+    /* arriba */
+    align-items: center;
+    justify-content: center;
+    /* gap? para que sirve?? */
+
+    gap: 2.5rem;
+    margin-top: 5rem;
+}
+.row{
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    height: 300px;
+    width: 320px;
+    cursor: pointer;
+}
+.row img{
+    width: 120%;
+    border-radius: 8px;
+
+    display: block;
+    transition: transform 2s;
+}
+/* aqui se le da esos efectos a las imagenes del portafolio */
+.layer{
+    width: 100%;
+    /* el height aqui comienza aqui en 0 para que abajo con el hover aparezca */
+    height: 0;
+    /* efecto rojo del linear gradient que quedo muy bien */
+    background: linear-gradient(to bottom,rgba(245, 242, 242, 0.11) 83%, rgba(219, 216, 211, 0.56) 96%);
+    position: absolute;
+    border-radius: 8px;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: center;
+    /* text-align: center; */
+    padding: 0 40px;
+    transition:  height 0.5s;
+}
+.layer h5{
+    font-size: 20px;
+    font-weight: 600;
+    position: absolute;
+    margin-bottom: -220px;
+    margin-left: 25px;
+    color: #1f1f1f;
+}
+.layer .linea-layer{
+    height: 10px;
+    width: 150px;
+    position: absolute;
+    margin-bottom: -240px;
+    margin-left: 10px;
+    color: #1f1f1f;
+}
+.layer p{
+    /* color: var(--second-color); */
+    font-size: 1rem;
+    line-height: 1.8;
+    position: absolute;
+    margin-bottom: -240px;
+    margin-left: 10px;
+    color: #1f1f1f;
+}
+.layer i{
+    color: var(--main-color);
+    margin-top: 20px;
+    font-size: 20px;
+    background: var(--text-color);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 60%;
+}
+/* extraña manera de hacer el hover pero parece que así sectio
+debe hacer, además este le da ZOOM a las imagenes */
+.row:hover img{
+    transform: scale(1.1);
+
+}
+
+/* el de abajo es una prueba que quise hacer */
+
+/* .layer:hover{
+    background: linear-gradient(rgba(71, 6, 6, 0.37), #ff004f);
+} */
+
+/* efecto hover del linear gradient */
+.row:hover .layer{
+    height: 100%;
+}
+
+/* parte contactos */
+
+.contact {
+    background: var(--second-bg-color);
+    /* display: grid; */
+    /* align-items: center; */
+    display: flex;
+    /* para que es fr? */
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    gap: 2.5rem;
+}
+.contac-text h4{
+    color: var(--text-color);
+    margin: 18px 0;
+    font-size: 20px;
+    font-weight: 600;
+}
+.contac-text h2{
+    font-size: var(--h2-font);
+    line-height: 1;
+}
+.contac-text p{
+    color: var(--second-color);
+    font-size: var(--p-font);
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+/* Lista de los contactos */
+.list{
+    margin-bottom: 2.8rem;
+}
+.list li{
+    margin-top: 5px;
+    margin-bottom: 12px;
+}
+.list li a{
+    display: block;
+    color: var(--second-color);
+    font-size: 14px;
+    transition: all .45s ease;
+}
+.list li a:hover{
+    color: var(--text-color);
+    transform: translateX(5px);
+}
+/* estilos a los iconos de redes sociales */
+.contact-icons i{
+    height: 45px;
+    width: 45px;
+    background: var(--main-color);
+    color: var(--text-color);
+    font-size: 22px;
+    /* quiero saber para que es esta propiedad de inline-flex de display y justify-content */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    margin-right: 15px;
+    /* este tambien quiero entender su funcion que ya ha aparecido varias veces */
+    transition: all .45s ease;
+}
+.contact-icons i:hover{
+    background: var(--text-color);
+    color: var(--main-color);
+}
+.contact-form form{
+    position: relative;
+}
+.contact-form form input,
+form textarea{
+    width: 100%;
+    padding: 14px;
+    background: var(--bg-color);
+    color: var(--text-color);
+    border: none;
+    outline: none;
+    font-size: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+.contact-form textarea{
+    resize: none;
+    height: 240px;
+}
+.contact-form .submit{
+    display: inline-block;
+    font-size: 16px;
+    /* color del boton */
+    background-color: var(--main-color);
+    /* color del texto */
+    color: var(--text-color);
+    width: 100%;
+    transition: all .45s ease;
+}
+.contact-form .submit:hover{
+    /* aumenta el tamaño del boton */
+    transform: scale(1.1);
+    cursor: pointer;
+}
+.end{
+    padding: 20px 15%;
+    /* el display flex... Quiero saber mas */
+    display: flex;
+    /* esta propiedad tambien de flex-wrap */
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    /* gap?... Que funcion tendra? */
+    gap: 2rem;
+    background: var(--bg-color);
+}
+.last-text p{
+    color: var(--second-color);
+    font-size: 14px;
+} 
+.top i{
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 15px;
+    color: var(--text-color);
+    background: var(--main-color);
+}
+/* Aqui comienza la parte responsive para la pagina */
+@media (max-width: 1480px){
+    header{
+        padding: 12px 2.5%;
+        transition: .1s;
+    }
+    /* header sticky?... Esta propiedad ajusta el header a responsive */
+    header.sticky{
+        padding: 10px 2.5%;
+        transition: .1s;
+    }
+    section{
+        padding: 110px 3% 60px;
+    }
+    /* end?... */
+    .end{
+        padding: 15px 3%;
+    }
+     
+}
+/* en este responsive se cambia los valores de las variables */
+@media (max-width: 1100px){
+    :root{
+        --big-font: 4rem;
+        --h2-font: 2.5rem;
+        --p-font: 1rem;
+        transition: .1s;
+    }
+    .home-text h3{
+       font-size: 2.5rem;
+    }
+    .home{
+        height: 95vh;
+    }
+}
+
+@media (max-width: 920px){
+    /* Ajuste de la parte about */
+    .about{
+        grid-template-columns: 1fr;
+    }   
+    .about-img{
+        text-align: center;
+        /* esta propiedad cambia el orden de un elemento */
+        order: 2;
+    }
+    .about-img img{
+        width: 100%;
+        height: auto;
+        max-width: 100%;
+    }
+    .contact{
+        grid-template-columns: 1fr; 
+    }
+
+}
+/* menu en modo responsive */
+@media (max-width: 840px){
+    #menu-icon{
+        display: block;
+    }
+    .navlist{
+        position: absolute;
+        top: -1000px;
+        right: 0;
+        left: 0;
+        display: flex;
+        /* flex direction?.. PREGUNTA */
+        flex-direction: column;
+        background: var(--bg-color);
+        text-align: left;
+        transition: all .45s ease;
+    }
+    .navlist a{
+        display: block;
+        margin: 17px;
+        font-size: 20px;
+        transition: all .45s ease;
+        color: var(--text-color);
+    }
+    .navlist a:hover{
+        color: var(--main-color);
+
+    }
+    .navlist a.active{
+        color: var(--text-color);
+    }
+    .navlist.open{
+        top: 100%;
+    }
+}
