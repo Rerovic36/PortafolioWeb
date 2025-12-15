@@ -331,14 +331,20 @@ header.sticky{
 .imagen-row{
     height: 310px;
     width: 320px;
-}
-.row img{
-    width: 120%;
+
+        width: 120%;
     border-radius: 8px;
 
     display: block;
     transition: transform 2s;
 }
+/* .row img{
+    width: 120%;
+    border-radius: 8px;
+
+    display: block;
+    transition: transform 2s;
+} */
 /* aqui se le da esos efectos a las imagenes del portafolio */
 .layer{
     width: 100%;
