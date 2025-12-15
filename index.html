@@ -20,6 +20,7 @@
 <body>
     <!--  ***************** header design ************* -->
     <header>
+
         <a href="#" class="logo">Stu<span>dio</span>8</a>
         <ul class="navlist">
             <li><a href="#home" class="active">Home</a></li>
@@ -32,7 +33,17 @@
 
         </div>
     </header>
-
+    <!-- <div class="container">
+        <div class="slide-images">
+            <ul>
+                <li><img src="images/slide1.PNG"></li>
+                <li><img src="images/slide2.PNG"></li>
+                <li><img src="images/slide3.PNG"></li>
+                <li><img src="images/slide4.PNG"></li>
+            </ul>
+        </div>
+    </div> -->
+        
     <!-- ************** diseño seccion home ***************** -->
     <section class="home" id="home">
         <div class="home-text">
@@ -46,7 +57,7 @@
             </p>
             <div class="button">
                 <!-- <a href="#" class="btn">Say Hello</a> -->
-                <a href="C:/Users/Victor/codigos/CODES/CODES/HTML/LOGIN PAGE/index.html" class="btn2"><span><i class='bx bxs-right-arrow'></i></span>Ve nuestros trabajos</a>
+                <a href="index.html" class="btn2"><span><i class='bx bxs-right-arrow'></i></span>Ve nuestros trabajos</a>
             </div>
         </div>
     </section>
@@ -118,50 +129,55 @@
             <h2>Ultimas Fotografías</h2>
         </div>
         <div class="portfolio-content">
-            <div class="row">
-                <img src="first.PNG">
+            <div class="row" ><a href="photos.html">
+                <img src="first1.PNG" class="imagen-row">
                 <div class="layer">
                     <h5>Ver más</h5>
                     <p>____________________</p>
                     <!-- <p>Check out of my ten best design's updates for the top develoment companies</p>
                     <a href="#"><i class='bx bx-link-external'></i></a> -->
                 </div>
+                </a>
             </div>
-            <div class="row">
-                <img src="first2.PNG">
+            <div class="row" ><a href="photos.html">
+                <img src="images/foto7.PNG" class="imagen-row">
                 <div class="layer">
                     <h5>Ver más</h5>
                     <p>____________________</p>
                     <!-- <p>Check out of my ten best design's updates for the top develoment companies</p>
                     <a href="#"><i class='bx bx-link-external'></i></a> -->
                 </div>
+                </a>
             </div>
-            <div class="row">
-                <img src="first3.PNG">
+            <div class="row" ><a href="photos.html">
+                <img src="first3.PNG" class="imagen-row">
                 <div class="layer">
                     <h5>Ver más</h5>
                     <p>____________________</p>
                     <!-- <p>Check out of my ten best design's updates for the top develoment companies</p> -->
                     <!-- <a href="#"><i class='bx bx-link-external'></i></a> -->
                 </div>
+                </a>
             </div>
-            <div class="row">
-                <img src="first4.PNG">
+            <div class="row"><a href="photos.html">
+                <img src="first7.PNG" class="imagen-row">
                 <div class="layer">
                     <h5>Ver más</h5>
                     <p>____________________</p>
                     <!-- <p>Check out of my ten best design's updates for the top develoment companies</p>
                     <a href="#"><i class='bx bx-link-external'></i></a> -->
                 </div>
+                </a>
             </div>
-            <div class="row" id="myClickableDiv">
-                <img src="first5.PNG">
+            <div class="row"><a href="photos.html">
+                <img src="images/foto6.PNG">
                 <div class="layer">
                     <h5>Ver más</h5>
                     <p>____________________</p>
                     <!-- <p>Check out of my ten best design's updates for the top develoment companies</p>
                     <a href="#"><i class='bx bx-link-external'></i></a> -->
                 </div>
+                </a>
             </div>
         </div>
     </section>
@@ -220,10 +236,7 @@
 
     <script>
 
-    const divElement = document.getElementById('myClickableDiv');
-    divElement.addEventListener('click', function() {
-    window.location.href = 'photos.html'; // Replace with your desired URL
-    });
+
 
         const header = document.querySelector("header");
 window.addEventListener ("scroll", function(){
@@ -233,7 +246,7 @@ window.addEventListener ("scroll", function(){
 let menu = document.querySelector('#menu-icon');
 let navlist = document.querySelector('.navlist');
 
-// funcion muy interesante hay que buscarle su logica
+
 menu.onclick = () => {
     menu.classList.toggle('bx-x');
     navlist.classList.toggle('open');
