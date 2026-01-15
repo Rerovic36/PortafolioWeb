@@ -4,12 +4,12 @@ const multer = require('multer');
 const nodemailer = require('nodemailer');
 const path = require('path');
 const fs = require('fs');
-const dotenv = require('dotenv')
+require('dotenv').config();
 
 const app = express();
 const upload = multer({ dest: 'uploads/' });
 const token = process.env.TOKEN
-const email = process.env.EMAIL
+const emailsender = process.env.EMAIL
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
@@ -26,15 +26,15 @@ app.post('/send-email', upload.array('attachments', 10), (req, res) => { // Allo
     const transporter = nodemailer.createTransport({
         service: 'Gmail', // or use your email provider
         auth: {
-            user: email,
+            user: emailsender,
             pass: token
         }
     });
 
     // Setup email data with unicode symbols
     const mailOptions = {
-        from: email,
-        to: email,
+        from: emailsender,
+        to: emailsender,
         subject: subject + " From:" + email,
         text: message,
         attachments:files.map(file => ({
@@ -50,7 +50,7 @@ app.post('/send-email', upload.array('attachments', 10), (req, res) => { // Allo
         }
         // Delete the file after sending email
         files.forEach(file => fs.unlinkSync(file.path));
-        res.send('<script>alert("Email sent successfully!"); window.location.href = "/";</script>');
+        res.send('<script>alert("Pago enviado exitosamente, pronto te mandaremos un correo con la confirmacion!"); window.location.href = "/";</script>');
     });
 });
 
