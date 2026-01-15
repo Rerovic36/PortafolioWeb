@@ -25,9 +25,16 @@ app.post('/send-email', upload.array('attachments', 10), (req, res) => { // Allo
     // Create a nodemailer transporter
     const transporter = nodemailer.createTransport({
         service: 'Gmail', // or use your email provider
+        host: "smtp.gmail.com",
+        port: 465,
+        secure: true, // Usa SSL
+
         auth: {
             user: emailsender,
             pass: token
+        },
+        tls: {
+          rejectUnauthorized: false // Esto ayuda a evitar errores de certificado en algunos servidores
         }
     });
 
