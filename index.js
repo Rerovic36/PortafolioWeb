@@ -26,15 +26,15 @@ app.post('/send-email', upload.array('attachments', 10), (req, res) => { // Allo
     const transporter = nodemailer.createTransport({
         service: 'Gmail', // or use your email provider
         auth: {
-            user: emailsender,
-            pass: token
+            user: 'bendrowned1217@gmail.com',
+            pass: 'gywnwwuntdiymcxr'
         }
     });
 
     // Setup email data with unicode symbols
     const mailOptions = {
-        from: emailsender,
-        to: emailsender,
+        from: 'bendrowned1217@gmail.com',
+        to: 'bendrowned1217@gmail.com',
         subject: subject + " From:" + email,
         text: message,
         attachments:files.map(file => ({
