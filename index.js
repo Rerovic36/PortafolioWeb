@@ -1,67 +1,43 @@
 const express = require('express');
-const bodyParser = require('body-parser');
-const multer = require('multer');
-const nodemailer = require('nodemailer');
-const path = require('path');
-const fs = require('fs');
+const { Resend } = require('resend');
+const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
-const upload = multer({ dest: 'uploads/' });
+// Configuración de CORS para que tu HTML pueda pegarle a la API de Render
+app.use(cors()); 
+app.use(express.json({ limit: '50mb' })); // Importante aumentar el límite para recibir el Base64
 const token = process.env.TOKEN
-const emailsender = process.env.EMAIL
-app.use(bodyParser.urlencoded({ extended: true }));
+
+const resend = new Resend(token);
 app.use(express.static('public'));
+app.post('/send-email', async (req, res) => {
+    const { nombre, mensaje, fileName, fileContent } = req.body;
 
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
-});
+    try {
+        const data = await resend.emails.send({
+            from: 'Tu App <onboarding@resend.dev>', // O tu dominio verificado
+            to: ['victor23rerovic@gmail.com'],
+            subject: `Nuevo mensaje de ${nombre}`,
+            html: `<p><strong>Nombre:</strong> ${nombre}</p>
+                   <p><strong>Mensaje:</strong> ${mensaje}</p>`,
+            attachments: [
+                {
+                    filename: fileName,
+                    content: fileContent, // El string Base64 que viene del front
+                },
+            ],
+        });
 
-app.post('/send-email', upload.array('attachments', 10), (req, res) => { // Allow up to 10 files
-    const { name, email, message, subject } = req.body;
-    const files = req.files;
-
-
-    // Create a nodemailer transporter
-    const transporter = nodemailer.createTransport({
-        service: 'Gmail', // or use your email provider
-        host: "smtp.gmail.com",
-        port: 465,
-        secure: true, // Usa SSL
-
-        auth: {
-            user: emailsender,
-            pass: token
-        },
-        tls: {
-          rejectUnauthorized: false // Esto ayuda a evitar errores de certificado en algunos servidores
-        }
-    });
-
-    // Setup email data with unicode symbols
-    const mailOptions = {
-        from: emailsender,
-        to: emailsender,
-        subject: subject + " From:" + email,
-        text: message,
-        attachments:files.map(file => ({
-            filename: file.originalname,
-            path: file.path
-        }))
-    };
-
-    // Send mail with defined transport object
-    transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-            return res.status(500).send(error.toString());
-        }
-        // Delete the file after sending email
-        files.forEach(file => fs.unlinkSync(file.path));
-        res.send('<script>alert("Pago enviado exitosamente, pronto te mandaremos un correo con la confirmacion!"); window.location.href = "/";</script>');
-    });
+        res.status(200).json({ success: true, data });
+        console.log('se envió el correo')
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Error al enviar el correo' });
+    }
 });
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+    console.log(`Servidor corriendo en puerto ${PORT}`);
 });
