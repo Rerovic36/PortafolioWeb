@@ -9,7 +9,7 @@ app.use(cors());
 app.use(express.json({ limit: '50mb' })); // Importante aumentar el límite para recibir el Base64
 const token = process.env.TOKEN
 
-const resend = new Resend(token);
+const resend = new Resend('re_MgoF1mXr_GNLsU3EXtYVeUYTFeGUVyCeh');
 app.use(express.static('public'));
 app.post('/send-email', async (req, res) => {
     const { nombre, mensaje, fileName, fileContent } = req.body;
@@ -40,4 +40,5 @@ app.post('/send-email', async (req, res) => {
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en puerto ${PORT}`);
+
 });
